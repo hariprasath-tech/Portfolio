@@ -42,17 +42,15 @@ export function SectionTitle({
         </motion.div>
       )}
 
-      {/* Yellow Outlined Anton Title */}
+      {/* Pure White Anton Title with Crimson Glow */}
       <motion.h2
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="font-anton text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wider uppercase leading-none"
+        className="font-anton text-3xl sm:text-5xl md:text-6xl lg:text-7xl tracking-wider uppercase leading-none text-white"
         style={{
-          color: '#ffe600',
-          WebkitTextStroke: '1.5px #ffffff',
-          textShadow: '0 0 25px rgba(255, 230, 0, 0.45)',
+          textShadow: '0 0 30px rgba(255, 42, 69, 0.45), 0 0 60px rgba(141, 11, 28, 0.3)',
         }}
       >
         {title}
@@ -65,7 +63,7 @@ export function SectionTitle({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-4 text-sm sm:text-base text-[#9a9a9a] max-w-2xl leading-relaxed"
+          className="mt-4 text-sm sm:text-base text-zinc-400 max-w-2xl leading-relaxed font-inter"
         >
           {subtitle}
         </motion.p>

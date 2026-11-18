@@ -73,7 +73,7 @@ export function Navbar({ activeSection, onHireMeClick }: NavbarProps) {
               HP
             </div>
             <div className="flex flex-col">
-              <span className="font-anton text-lg sm:text-xl tracking-wider text-white group-hover:text-[#ffe600] transition-colors leading-none">
+              <span className="font-anton text-lg sm:text-xl tracking-wider text-white group-hover:text-[#ff2a45] transition-colors leading-none">
                 HARI PRASATH <span className="text-[#ff2a45]">.</span>
               </span>
               <span className="text-[10px] font-mono tracking-[0.2em] text-[#9a9a9a] uppercase mt-0.5">
@@ -112,7 +112,7 @@ export function Navbar({ activeSection, onHireMeClick }: NavbarProps) {
               onClick={onHireMeClick}
               className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-anton text-sm tracking-wider uppercase text-white bg-gradient-to-r from-[#8d0b1c] via-[#d90429] to-[#ff2a45] hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,42,69,0.45)] border border-[#ff2a45]/50 cursor-pointer"
             >
-              <Sparkles className="w-3.5 h-3.5 text-[#ffe600]" />
+              <Sparkles className="w-3.5 h-3.5 text-white" />
               <span>Hire Me</span>
               <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
@@ -168,7 +168,7 @@ export function Navbar({ activeSection, onHireMeClick }: NavbarProps) {
                 }}
                 className="mt-3 w-full py-3.5 rounded-xl font-anton text-sm tracking-wider uppercase text-white bg-gradient-to-r from-[#8d0b1c] to-[#d90429] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,42,69,0.4)] border border-[#ff2a45]/40"
               >
-                <Sparkles className="w-4 h-4 text-[#ffe600]" />
+                <Sparkles className="w-4 h-4 text-white" />
                 <span>Hire Me / Get In Touch</span>
               </button>
             </div>

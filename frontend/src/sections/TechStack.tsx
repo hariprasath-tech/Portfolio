@@ -88,7 +88,7 @@ export function TechStack() {
                         className="p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 hover:bg-white/[0.04] transition-all group/item"
                       >
                         <div className="flex items-center justify-between gap-2 mb-1">
-                          <span className="font-mono text-xs font-bold text-white group-hover/item:text-[#ffe600] transition-colors">
+                          <span className="font-mono text-xs font-bold text-white group-hover/item:text-[#ff2a45] transition-colors">
                             {skill.name}
                           </span>
                           <span
@@ -112,7 +112,7 @@ export function TechStack() {
                 {/* Bottom Category Status */}
                 <div className="mt-5 pt-3 border-t border-white/5 flex items-center justify-between text-[10px] font-mono text-[#9a9a9a]">
                   <span>{cat.skills.length} VERIFIED TOOLS</span>
-                  <span className="text-[#ffe600] font-bold">READY FOR PROD</span>
+                  <span className="text-[#ff2a45] font-bold">READY FOR PROD</span>
                 </div>
               </motion.div>
             )

@@ -49,7 +49,7 @@ export function BeyondCode() {
                 <div>
                   {/* Category & Icon */}
                   <div className="flex items-center justify-between pb-4 border-b border-white/10 mb-4">
-                    <span className="text-xs font-mono font-bold text-[#ffe600] uppercase tracking-wider">
+                    <span className="text-xs font-mono font-bold text-[#ff2a45] uppercase tracking-wider">
                       {item.category}
                     </span>
                     <div
@@ -65,7 +65,7 @@ export function BeyondCode() {
                   </div>
 
                   {/* Title & Headline */}
-                  <h3 className="font-anton text-2xl sm:text-3xl text-white tracking-wide uppercase leading-tight group-hover:text-[#ffe600] transition-colors">
+                  <h3 className="font-anton text-2xl sm:text-3xl text-white tracking-wide uppercase leading-tight group-hover:text-[#ff2a45] transition-colors">
                     {item.title}
                   </h3>
                   <p className="font-mono text-xs text-[#ff2a45] font-semibold mt-1 mb-3">
@@ -80,7 +80,7 @@ export function BeyondCode() {
 
                 {/* Takeaway Ribbon */}
                 <div className="mt-6 p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs font-mono text-zinc-400">
-                  <span className="text-[#ffe600] font-bold block mb-0.5">ENGINEERING IMPACT:</span>
+                  <span className="text-[#ff2a45] font-bold block mb-0.5">ENGINEERING IMPACT:</span>
                   <span>{item.takeaway}</span>
                 </div>
               </motion.div>

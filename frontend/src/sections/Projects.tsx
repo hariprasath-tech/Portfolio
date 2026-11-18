@@ -34,7 +34,7 @@ export function Projects() {
   const gridProjects = content.projects.slice(2) // 03 LocalKart, 04 EV Safety, 05 Carbon, 06 Nexus Token
 
   return (
-    <section id="projects" className="py-24 relative overflow-hidden bg-[#050505]">
+    <section id="projects" className="py-24 relative overflow-hidden bg-[#080808]">
       {/* Background Red Streak */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-[#8d0b1c]/15 rounded-full blur-[180px] pointer-events-none" />
 
@@ -63,8 +63,8 @@ export function Projects() {
             {/* Left Content (7 cols) */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex flex-wrap items-center gap-2.5">
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase text-[#ffe600] bg-[#ffe600]/10 border border-[#ffe600]/30 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#ffe600]" />
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold tracking-wider uppercase text-[#ff2a45] bg-[#d90429]/15 border border-[#ff2a45]/30 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-[#ff2a45]" />
                   <span>PRIORITY 01 · HERO VENTURE</span>
                 </span>
                 <span className="px-3 py-1 rounded-full text-xs font-mono font-bold text-white bg-[#d90429]/30 border border-[#d90429]/50">
@@ -76,7 +76,7 @@ export function Projects() {
                 <h3 className="font-anton text-4xl sm:text-5xl lg:text-6xl text-white tracking-wide uppercase leading-tight">
                   {heroProject.title}
                 </h3>
-                <p className="font-mono text-sm sm:text-base text-[#ffe600] mt-1 font-semibold">
+                <p className="font-mono text-sm sm:text-base text-[#ff2a45] mt-1 font-semibold">
                   {heroProject.subtitle}
                 </p>
               </div>
@@ -147,7 +147,7 @@ export function Projects() {
                   <div className="font-anton text-2xl text-white tracking-wide uppercase">
                     AUTONOMOUS CLIMBER
                   </div>
-                  <div className="text-xs font-mono text-[#ffe600]">
+                  <div className="text-xs font-mono text-zinc-300">
                     Field Tested · Mechanized Pruning
                   </div>
                 </div>
@@ -163,7 +163,7 @@ export function Projects() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-zinc-500">Recognition:</span>
-                    <span className="text-[#ffe600]">MIT App Contest Top 5</span>
+                    <span className="text-[#ff2a45] font-bold">MIT App Contest Top 5</span>
                   </div>
                 </div>
               </div>
@@ -188,7 +188,7 @@ export function Projects() {
                   <Shield className="w-3.5 h-3.5 text-[#ff2a45]" />
                   <span>PRIORITY 02 · SMART INDIA HACKATHON 2026</span>
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold text-[#ffe600] bg-[#ffe600]/10 border border-[#ffe600]/30">
+                <span className="px-3 py-1 rounded-full text-xs font-mono font-bold text-white bg-white/10 border border-white/20">
                   Team Neural Nexus
                 </span>
               </div>
@@ -197,7 +197,7 @@ export function Projects() {
                 <h3 className="font-anton text-3xl sm:text-4xl lg:text-5xl text-white tracking-wide uppercase leading-tight">
                   {secondProject.title}
                 </h3>
-                <p className="font-mono text-sm text-[#ffe600] mt-0.5">{secondProject.subtitle}</p>
+                <p className="font-mono text-sm text-[#ff2a45] mt-0.5">{secondProject.subtitle}</p>
               </div>
 
               <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed font-inter">
@@ -241,7 +241,7 @@ export function Projects() {
             <div className="lg:col-span-4 p-5 rounded-2xl bg-[#050505] border border-white/10 text-xs font-mono space-y-3">
               <div className="flex items-center justify-between pb-2 border-b border-white/10 text-white font-bold">
                 <span>INTRUSION FORENSICS</span>
-                <span className="text-[#ffe600]">LIGHTGBM + SHAP</span>
+                <span className="text-[#ff2a45]">LIGHTGBM + SHAP</span>
               </div>
               <p className="text-zinc-400 font-inter text-xs leading-relaxed">
                 Evaluates packet sequence flow rates to forecast distributed zero-day DDoS and polymorphic attack payloads with feature attribution explainability.
@@ -272,7 +272,7 @@ export function Projects() {
               >
                 <div>
                   <div className="flex items-center justify-between gap-3 pb-3 border-b border-white/10 mb-3">
-                    <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ffe600]">
+                    <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ff2a45]">
                       <Icon className="w-4 h-4 text-[#ff2a45]" />
                       <span>{p.category}</span>
                     </div>
@@ -281,7 +281,7 @@ export function Projects() {
                     </span>
                   </div>
 
-                  <h4 className="font-anton text-2xl sm:text-3xl text-white tracking-wide uppercase group-hover:text-[#ffe600] transition-colors leading-tight">
+                  <h4 className="font-anton text-2xl sm:text-3xl text-white tracking-wide uppercase group-hover:text-[#ff2a45] transition-colors leading-tight">
                     {p.title}
                   </h4>
                   <p className="font-mono text-xs text-zinc-400 mt-1 mb-3">{p.subtitle}</p>

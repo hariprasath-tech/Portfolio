@@ -168,7 +168,7 @@ export const content = {
         id: 'backend',
         title: 'Backend Engineering',
         tagline: 'Scalable server microservices & REST APIs',
-        color: '#ffe600',
+        color: '#ff2a45',
         skills: [
           { name: 'Spring Boot', level: 'Advanced', desc: 'Enterprise Java, RESTful Web Services, Spring Data JPA, Security' },
           { name: 'Fastify', level: 'Intermediate', desc: 'High-throughput Node.js microservices framework' },
@@ -206,7 +206,7 @@ export const content = {
         id: 'databases',
         title: 'Database Management',
         tagline: 'Relational schemas & document stores',
-        color: '#ffe600',
+        color: '#ff2a45',
         skills: [
           { name: 'MySQL', level: 'Advanced', desc: 'Relational Schemas, Foreign Keys, Complex Joins, Indexing' },
           { name: 'PostgreSQL', level: 'Intermediate', desc: 'ACID Compliance, JSONB Queries, Relational Schemas' },
@@ -718,7 +718,7 @@ export const content = {
       description: 'Handball is intensely physical and tactical. Moving without the ball, setting perimeter screens, and anticipating defensive rotations requires synchronized trust between six teammates executing in sync.',
       takeaway: 'Cultivates deep collaborative trust and team-first defensive grit.',
       icon: 'Shield',
-      accentColor: '#ffe600',
+      accentColor: '#ff2a45',
     },
     {
       id: 'bc-speaking',
@@ -738,7 +738,7 @@ export const content = {
       description: 'Co-founding CocoCut with Nithin Vasan and Adithiya Jayan taught me the grit of hardware prototyping: talking directly to coconut farmers, ordering motor parts, soldering circuits, and iterating rover climbing wheels in the lab until it climbs.',
       takeaway: 'True software and hardware value is proven in the soil, not just on a screen.',
       icon: 'Rocket',
-      accentColor: '#ffe600',
+      accentColor: '#ff2a45',
     },
   ],
 }

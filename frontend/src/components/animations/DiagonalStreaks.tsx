@@ -49,7 +49,7 @@ export function DiagonalStreaks({ className = '', intensity = 'normal' }: Diagon
 
       {/* Floating Light Specks / Lens Accents */}
       <div className="absolute top-1/4 left-1/3 w-96 h-96 bg-[#FF1538]/20 rounded-full blur-[140px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#FFF000]/10 rounded-full blur-[160px]" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-[#d90429]/15 rounded-full blur-[160px]" />
     </div>
   )
 }

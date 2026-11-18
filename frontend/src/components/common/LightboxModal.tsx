@@ -93,7 +93,7 @@ export function LightboxModal({ item, onClose }: LightboxModalProps) {
               {item.tags.map((t) => (
                 <span
                   key={t}
-                  className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/5 border border-white/10 text-[#ffe600]"
+                  className="px-2.5 py-1 rounded-md text-[11px] font-mono bg-white/5 border border-white/10 text-[#ff2a45]"
                 >
                   #{t}
                 </span>

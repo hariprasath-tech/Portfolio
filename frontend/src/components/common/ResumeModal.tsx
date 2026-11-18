@@ -73,8 +73,8 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
           <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm">
             {/* Academic Credentials */}
             <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ffe600] uppercase">
-                <GraduationCap className="w-4 h-4 text-[#ffe600]" />
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ff2a45] uppercase">
+                <GraduationCap className="w-4 h-4 text-[#ff2a45]" />
                 <span>ACADEMIC FOUNDATION</span>
               </div>
               <p className="text-white font-bold">{content.personal.college}</p>
@@ -115,30 +115,30 @@ export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
             {/* Key Accomplishments */}
             <div className="space-y-2">
               <div className="flex items-center gap-2 text-xs font-mono font-bold text-white uppercase">
-                <Award className="w-4 h-4 text-[#ffe600]" />
+                <Award className="w-4 h-4 text-[#ff2a45]" />
                 <span>SELECT VERIFIED MILESTONES</span>
               </div>
               <ul className="space-y-2 text-xs text-zinc-300">
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a45] mt-1.5 shrink-0" />
                   <span>
                     <strong>600+ Algorithmic Challenges Solved</strong> on SkillRack in Java, C, and Python.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a45] mt-1.5 shrink-0" />
                   <span>
                     <strong>Co-Founder of CocoCut</strong>: Autonomous coconut leaf cutting rover prototype (MIT App Contest Top 5).
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a45] mt-1.5 shrink-0" />
                   <span>
                     <strong>Smart India Hackathon (SIH 2026)</strong>: Team Neural Nexus developing CyberSentinel AI.
                   </span>
                 </li>
                 <li className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a45] mt-1.5 shrink-0" />
                   <span>
                     <strong>Freelance Video Editor</strong>: Authored 14+ commercial edits for ISSai Technology & IDC Media.
                   </span>

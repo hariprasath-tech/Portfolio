@@ -27,7 +27,7 @@ export function LeadershipAchievements() {
   }
 
   return (
-    <section id="leadership" className="py-24 relative overflow-hidden bg-[#050505]">
+    <section id="leadership" className="py-24 relative overflow-hidden bg-[#080808] border-t border-white/5">
       {/* Background Glow */}
       <div className="absolute top-1/3 right-0 w-[500px] h-[500px] bg-[#d90429]/15 rounded-full blur-[170px] pointer-events-none" />
 
@@ -39,16 +39,14 @@ export function LeadershipAchievements() {
               <span>RECOGNITION & INITIATIVE</span>
             </div>
             <h2
-              className="font-anton text-3xl sm:text-5xl md:text-6xl tracking-wider uppercase leading-none"
+              className="font-anton text-3xl sm:text-5xl md:text-6xl tracking-wider uppercase leading-none text-white"
               style={{
-                color: '#ffe600',
-                WebkitTextStroke: '1.5px #ffffff',
-                textShadow: '0 0 20px rgba(255, 230, 0, 0.45)',
+                textShadow: '0 0 25px rgba(255, 42, 69, 0.45)',
               }}
             >
               LEADERSHIP & ACHIEVEMENTS
             </h2>
-            <p className="mt-2 text-sm text-[#9a9a9a] max-w-xl font-inter">
+            <p className="mt-2 text-sm text-zinc-400 max-w-xl font-inter">
               Placement coordination, agricultural robotics startup founding, hackathons, and public speaking.
             </p>
           </div>
@@ -60,14 +58,14 @@ export function LeadershipAchievements() {
               className="p-3 rounded-xl bg-[#0f0f10] border border-white/10 hover:border-[#ff2a45] text-white transition-all shadow-md active:scale-95 cursor-pointer"
               aria-label="Scroll achievements left"
             >
-              <ChevronLeft className="w-5 h-5 text-[#ffe600]" />
+              <ChevronLeft className="w-5 h-5 text-[#ff2a45]" />
             </button>
             <button
               onClick={() => handleScroll('right')}
               className="p-3 rounded-xl bg-[#0f0f10] border border-white/10 hover:border-[#ff2a45] text-white transition-all shadow-md active:scale-95 cursor-pointer"
               aria-label="Scroll achievements right"
             >
-              <ChevronRight className="w-5 h-5 text-[#ffe600]" />
+              <ChevronRight className="w-5 h-5 text-[#ff2a45]" />
             </button>
           </div>
         </div>
@@ -96,15 +94,15 @@ export function LeadershipAchievements() {
                       <Icon className="w-4 h-4 text-[#ff2a45]" />
                       <span>{item.category.toUpperCase()}</span>
                     </div>
-                    <span className="text-xs font-mono font-bold text-[#ffe600] bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
+                    <span className="text-xs font-mono font-bold text-white bg-white/5 px-2.5 py-0.5 rounded-full border border-white/10">
                       {item.year}
                     </span>
                   </div>
 
-                  <h3 className="font-anton text-2xl text-white tracking-wide uppercase leading-tight group-hover:text-[#ffe600] transition-colors">
+                  <h3 className="font-anton text-2xl text-white tracking-wide uppercase leading-tight group-hover:text-[#ff2a45] transition-colors">
                     {item.title}
                   </h3>
-                  <p className="font-mono text-xs text-[#ffe600] mt-1 font-semibold">
+                  <p className="font-mono text-xs text-[#ff2a45] mt-1 font-semibold">
                     {item.subtitle}
                   </p>
 

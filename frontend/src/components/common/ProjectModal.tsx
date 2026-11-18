@@ -49,7 +49,7 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
           {/* Header Banner */}
           <div className="relative p-6 sm:p-8 bg-gradient-to-r from-[#8d0b1c]/40 via-[#0f0f10] to-[#0f0f10] border-b border-white/10 flex items-start justify-between gap-4">
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono tracking-wider text-[#ffe600] uppercase bg-[#ffe600]/10 border border-[#ffe600]/25 mb-2">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono tracking-wider text-[#ff2a45] uppercase bg-[#d90429]/15 border border-[#ff2a45]/30 mb-2">
                 <span>{project.category}</span>
                 <span>·</span>
                 <span className="text-[#ff2a45]">{project.status}</span>
@@ -86,8 +86,8 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
 
             {/* Problem Statement */}
             <div className="space-y-2">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ffe600] uppercase tracking-wider">
-                <AlertCircle className="w-4 h-4 text-[#ffe600]" />
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ff2a45] uppercase tracking-wider">
+                <AlertCircle className="w-4 h-4 text-[#ff2a45]" />
                 <span>THE ENGINEERING PROBLEM</span>
               </div>
               <p className="text-zinc-300 leading-relaxed bg-[#050505] p-4 rounded-xl border border-white/5">

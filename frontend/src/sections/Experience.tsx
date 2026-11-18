@@ -32,7 +32,7 @@ export function Experience() {
             >
               {/* Glowing Timeline Marker */}
               <div className="absolute -left-[33px] sm:-left-[49px] top-1.5 w-5 h-5 rounded-full bg-[#050505] border-2 border-[#ff2a45] shadow-[0_0_12px_#ff2a45] flex items-center justify-center group-hover:scale-125 transition-transform">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600]" />
+                <span className="w-1.5 h-1.5 rounded-full bg-[#ff2a45]" />
               </div>
 
               {/* Card Container */}
@@ -40,7 +40,7 @@ export function Experience() {
                 {/* Header Strip */}
                 <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-white/10">
                   <div>
-                    <span className="text-xs font-mono font-bold text-[#ffe600] uppercase tracking-wider">
+                    <span className="text-xs font-mono font-bold text-[#ff2a45] uppercase tracking-wider">
                       {exp.type}
                     </span>
                     <h3 className="font-anton text-2xl sm:text-3xl text-white tracking-wide uppercase leading-tight mt-0.5">
@@ -52,7 +52,7 @@ export function Experience() {
                   </div>
 
                   <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-400 bg-white/5 px-3 py-1.5 rounded-full border border-white/10 shrink-0">
-                    <Calendar className="w-3.5 h-3.5 text-[#ffe600]" />
+                    <Calendar className="w-3.5 h-3.5 text-[#ff2a45]" />
                     <span>{exp.period}</span>
                   </div>
                 </div>
@@ -80,7 +80,7 @@ export function Experience() {
                 {/* Placeholder Note (as requested for strictly authentic disclosures) */}
                 {(exp as { placeholderNote?: string }).placeholderNote && (
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2 text-xs font-mono text-zinc-400">
-                    <AlertCircle className="w-3.5 h-3.5 text-[#ffe600] shrink-0" />
+                    <AlertCircle className="w-3.5 h-3.5 text-[#ff2a45] shrink-0" />
                     <span>{(exp as { placeholderNote?: string }).placeholderNote}</span>
                   </div>
                 )}

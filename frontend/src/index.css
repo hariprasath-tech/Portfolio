@@ -3,12 +3,13 @@
 @layer base {
   :root {
     --bg-dark: #080808;
-    --crimson: #A00025;
-    --maroon: #78001D;
-    --bright-red: #FF1538;
-    --yellow: #FFF000;
-    --text-white: #FFFFFF;
-    --text-muted: #9A9A9A;
+    --crimson: #d90429;
+    --deep-red: #8d0b1c;
+    --bright-red: #ff2a45;
+    --ruby: #e60026;
+    --text-white: #ffffff;
+    --text-muted: #a1a1aa;
+    --border-glass: rgba(255, 255, 255, 0.12);
   }
 
   html {
@@ -41,7 +42,7 @@
   }
 
   ::selection {
-    background: rgba(255, 21, 56, 0.5);
+    background: rgba(255, 42, 69, 0.45);
     color: #ffffff;
   }
 }
@@ -49,7 +50,7 @@
 /* Typography Utility Classes Matching Reference Video */
 .font-bebas {
   font-family: 'Bebas Neue', 'Anton', -apple-system, sans-serif;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
 }
 
@@ -63,24 +64,28 @@
   font-family: 'Inter', sans-serif;
 }
 
-/* Reference Video Typography Styles */
-.title-yellow-glow {
+/* Premium High-End Editorial Glows */
+.title-white-glow {
   font-family: 'Bebas Neue', 'Anton', sans-serif;
-  color: #FFF000;
+  color: #ffffff;
   text-transform: uppercase;
-  text-shadow: 0 0 25px rgba(255, 240, 0, 0.55), 0 0 50px rgba(255, 21, 56, 0.35);
+  text-shadow: 0 0 30px rgba(255, 42, 69, 0.6), 0 0 70px rgba(141, 11, 28, 0.4);
   letter-spacing: 0.04em;
 }
 
 .title-red-glow {
   font-family: 'Bebas Neue', 'Anton', sans-serif;
-  color: #FF1538;
+  color: #ff2a45;
   text-transform: uppercase;
-  text-shadow: 0 0 30px rgba(255, 21, 56, 0.7), 0 0 60px rgba(160, 0, 37, 0.5);
+  text-shadow: 0 0 35px rgba(255, 42, 69, 0.75), 0 0 70px rgba(141, 11, 28, 0.5);
 }
 
 .text-stroke-white {
-  -webkit-text-stroke: 1.5px #FFFFFF;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.85);
+}
+
+.text-stroke-red {
+  -webkit-text-stroke: 1.5px #ff2a45;
 }
 
 /* Film Grain Overlay */
@@ -91,13 +96,13 @@
   height: 100%;
   pointer-events: none;
   z-index: 999;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 }
 
 /* Asymmetrical Floating Image Cards */
 .floating-card-shadow {
-  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(160, 0, 37, 0.3);
+  box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.9), 0 0 30px rgba(217, 4, 41, 0.3);
 }
 
 /* Custom Scrollbar */
@@ -110,10 +115,10 @@
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #78001D;
+  background: #8d0b1c;
   border-radius: 9999px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #FF1538;
+  background: #ff2a45;
 }

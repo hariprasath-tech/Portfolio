@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import standingCutout from '../../assets/hari-standing-cutout.png'
+import portraitCutout from '../../assets/hari-prasath-cutout.png'
 
 interface MotionIntroProps {
   onComplete: () => void
@@ -9,21 +9,25 @@ interface MotionIntroProps {
 const LETTERS = ['P', 'O', 'R', 'T', 'F', 'O', 'L', 'I', 'O']
 
 export function MotionIntro({ onComplete }: MotionIntroProps) {
-  // Phase timer: 0-8 seconds
+  // Phase 0: Pure black (0 - 1.5s)
+  // Phase 1: Red ambient glow breathes in (1.5 - 3.2s)
+  // Phase 2: PORTFOLIO characters reveal (3.2 - 5.5s)
+  // Phase 3: Silhouette rises gently (5.5 - 7.5s)
+  // Phase 4: Smooth photographic reveal with soft rim light (7.5 - 9.5s)
+  // Phase 5: Name "HARI PRASATH" reveals (9.5 - 11.2s)
   const [phase, setPhase] = useState<0 | 1 | 2 | 3 | 4 | 5>(0)
   const [isExiting, setIsExiting] = useState(false)
 
   useEffect(() => {
-    // 0-1s: Pure black screen (phase 0)
-    const t1 = setTimeout(() => setPhase(1), 1000) // 1-2s: Red glowing typography starts
-    const t2 = setTimeout(() => setPhase(2), 2000) // 2-4s: PORTFOLIO character-by-character
-    const t3 = setTimeout(() => setPhase(3), 4000) // 4-5s: Silhouette rises from bottom
-    const t4 = setTimeout(() => setPhase(4), 5000) // 5-7s: Real photograph mask reveal
-    const t5 = setTimeout(() => setPhase(5), 7000) // 7-8s: Name HARI PRASATH reveals
+    const t1 = setTimeout(() => setPhase(1), 1400) // 1.4s
+    const t2 = setTimeout(() => setPhase(2), 2800) // 2.8s
+    const t3 = setTimeout(() => setPhase(3), 5200) // 5.2s (Silhouette gently rises)
+    const t4 = setTimeout(() => setPhase(4), 7400) // 7.4s (Photograph dissolves in smoothly)
+    const t5 = setTimeout(() => setPhase(5), 9400) // 9.4s (Name & title reveal)
     const tEnd = setTimeout(() => {
       setIsExiting(true)
       setTimeout(onComplete, 800)
-    }, 8200)
+    }, 11400)
 
     return () => {
       clearTimeout(t1)
@@ -37,7 +41,7 @@ export function MotionIntro({ onComplete }: MotionIntroProps) {
 
   const handleSkip = () => {
     setIsExiting(true)
-    setTimeout(onComplete, 400)
+    setTimeout(onComplete, 350)
   }
 
   return (
@@ -46,50 +50,50 @@ export function MotionIntro({ onComplete }: MotionIntroProps) {
         <motion.div
           key="motion-intro-overlay"
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, y: -40, scale: 1.02 }}
+          exit={{ opacity: 0, scale: 1.03, filter: 'blur(8px)' }}
           transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
           className="fixed inset-0 z-[10000] bg-[#080808] flex items-center justify-center overflow-hidden select-none"
         >
           {/* Skip Intro Button */}
           <button
             onClick={handleSkip}
-            className="absolute top-6 right-6 z-50 px-4 py-2 rounded-full font-mono text-xs uppercase tracking-widest text-[#FFF000] bg-black/60 border border-[#FFF000]/40 hover:bg-[#A00025] hover:text-white transition-all cursor-pointer shadow-lg"
+            className="absolute top-6 right-6 z-50 px-4 py-2 rounded-full font-mono text-xs uppercase tracking-widest text-zinc-300 bg-white/5 border border-white/20 hover:bg-[#d90429] hover:text-white hover:border-[#ff2a45] transition-all cursor-pointer backdrop-blur-md shadow-xl"
           >
             SKIP INTRO ➔
           </button>
 
-          {/* Phase 1-5: Ambient Red Space Background */}
+          {/* Phase 1+: Ambient Red Nebula Atmosphere */}
           {phase >= 1 && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 1.8, ease: 'easeOut' }}
               className="absolute inset-0 pointer-events-none"
             >
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#A00025]/30 rounded-full blur-[180px]" />
-              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[900px] h-[300px] bg-[#FF1538]/20 rounded-full blur-[160px]" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[750px] h-[750px] bg-[#8d0b1c]/30 rounded-full blur-[200px]" />
+              <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[900px] h-[350px] bg-[#d90429]/20 rounded-full blur-[180px]" />
             </motion.div>
           )}
 
-          {/* Phase 2-5: Massive "PORTFOLIO" Letters Character by Character */}
+          {/* Phase 2+: Massive Glowing "PORTFOLIO" Letters */}
           {phase >= 2 && (
             <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none px-4">
-              <div className="flex items-center justify-center gap-1 sm:gap-3 md:gap-5 overflow-hidden">
+              <div className="flex items-center justify-center gap-1 sm:gap-3 md:gap-4 overflow-hidden">
                 {LETTERS.map((letter, i) => (
                   <motion.span
                     key={i}
-                    initial={{ y: '140%', opacity: 0, filter: 'blur(10px)' }}
-                    animate={{ y: '0%', opacity: 0.95, filter: 'blur(0px)' }}
+                    initial={{ y: '120%', opacity: 0, filter: 'blur(12px)' }}
+                    animate={{ y: '0%', opacity: 0.9, filter: 'blur(0px)' }}
                     transition={{
-                      duration: 0.8,
-                      delay: i * 0.12,
+                      duration: 0.9,
+                      delay: i * 0.1,
                       ease: [0.16, 1, 0.3, 1],
                     }}
-                    className="font-bebas text-6xl sm:text-8xl md:text-9xl lg:text-[14vw] tracking-wider uppercase leading-none select-none"
+                    className="font-bebas text-6xl sm:text-8xl md:text-9xl lg:text-[13vw] tracking-wider uppercase leading-none select-none text-[#d90429]"
                     style={{
-                      color: '#FF1538',
                       textShadow:
-                        '0 0 30px rgba(255, 21, 56, 0.8), 0 0 60px rgba(160, 0, 37, 0.6), 0 0 100px rgba(120, 0, 29, 0.5)',
+                        '0 0 40px rgba(217, 4, 41, 0.75), 0 0 80px rgba(141, 11, 28, 0.5)',
+                      WebkitTextStroke: '1px rgba(255, 42, 69, 0.6)',
                     }}
                   >
                     {letter}
@@ -99,77 +103,88 @@ export function MotionIntro({ onComplete }: MotionIntroProps) {
             </div>
           )}
 
-          {/* Phase 3 & 4: Silhouette Rises, then Real Photo Mask Reveal */}
+          {/* Phase 3 & 4: Silhouette Rises Gently, Then Smooth Photographic Reveal */}
           {phase >= 3 && (
             <div className="absolute bottom-0 left-1/2 -translate-x-1/2 z-20 flex justify-center items-end pointer-events-none">
-              {/* Ground Red Cyber Glow under feet */}
-              <div className="absolute bottom-0 w-[420px] h-[70px] bg-gradient-to-r from-transparent via-[#FF1538]/50 to-transparent blur-2xl" />
+              {/* Volumetric stage light under portrait */}
+              <div className="absolute bottom-0 w-[550px] h-[100px] bg-gradient-to-r from-transparent via-[#ff2a45]/40 to-transparent blur-3xl pointer-events-none" />
 
               <motion.div
-                initial={{ y: 220, opacity: 0 }}
+                initial={{ y: 160, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
-                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
                 className="relative"
               >
-                {/* Real Photo with Phase 4 Mask Transition */}
+                {/* Silhouette Stage (Phase 3) */}
                 <motion.img
-                  src={standingCutout}
+                  src={portraitCutout}
                   alt="Hari Prasath S"
-                  initial={{
-                    clipPath: 'circle(0% at 50% 100%)',
-                    filter: 'brightness(0) drop-shadow(0 0 35px #FF1538)',
-                  }}
+                  initial={{ opacity: 1, filter: 'brightness(0) drop-shadow(0 0 35px #d90429)' }}
                   animate={{
-                    clipPath: phase >= 4 ? 'circle(150% at 50% 50%)' : 'circle(0% at 50% 100%)',
-                    filter:
-                      phase >= 4
-                        ? 'brightness(1.02) contrast(1.06) drop-shadow(0 0 40px rgba(255, 21, 56, 0.45))'
-                        : 'brightness(0) drop-shadow(0 0 35px #FF1538)',
+                    opacity: phase >= 4 ? 0 : 1,
+                    filter: 'brightness(0) drop-shadow(0 0 35px #d90429)',
+                  }}
+                  transition={{ duration: 1.2, ease: 'easeInOut' }}
+                  className="w-auto h-[55vh] sm:h-[65vh] md:h-[75vh] max-h-[720px] object-contain select-none"
+                />
+
+                {/* Real Photograph Stage (Phase 4: Dissolves in smoothly over the silhouette) */}
+                <motion.img
+                  src={portraitCutout}
+                  alt="Hari Prasath S"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: phase >= 4 ? 1 : 0,
                   }}
                   transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="w-auto h-[65vh] sm:h-[75vh] md:h-[82vh] max-h-[820px] object-contain select-none"
+                  className="absolute inset-0 w-auto h-[55vh] sm:h-[65vh] md:h-[75vh] max-h-[720px] object-contain select-none"
+                  style={{
+                    filter:
+                      'brightness(1.02) contrast(1.04) drop-shadow(0 0 45px rgba(217, 4, 41, 0.45))',
+                  }}
                 />
               </motion.div>
             </div>
           )}
 
-          {/* Phase 5: Name "HARI PRASATH" Kinetic Reveal */}
+          {/* Phase 5: Name "HARI PRASATH" Elegant Reveal */}
           {phase >= 5 && (
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.95 }}
+              initial={{ opacity: 0, y: 25, scale: 0.96 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute top-1/4 left-1/2 -translate-x-1/2 z-30 text-center pointer-events-none"
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute top-[18%] left-1/2 -translate-x-1/2 z-30 text-center pointer-events-none w-full px-4"
             >
-              <div className="text-xs sm:text-sm font-mono tracking-[0.3em] text-[#FFF000] uppercase mb-1">
+              <div className="text-xs sm:text-sm font-mono tracking-[0.35em] text-[#ff2a45] uppercase mb-1 font-bold">
                 HELLO, I'M
               </div>
               <h1
                 className="font-bebas text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider uppercase text-white leading-none"
                 style={{
-                  textShadow: '0 0 35px rgba(255, 240, 0, 0.7), 0 0 70px rgba(255, 21, 56, 0.5)',
+                  textShadow:
+                    '0 0 35px rgba(255, 255, 255, 0.5), 0 0 70px rgba(217, 4, 41, 0.6)',
                 }}
               >
                 HARI PRASATH
               </h1>
-              <div className="text-xs sm:text-base font-mono text-[#FF1538] font-bold tracking-[0.25em] uppercase mt-2">
-                DEVELOPER · CREATOR · FOUNDER
+              <div className="text-xs sm:text-sm font-mono text-zinc-300 font-semibold tracking-[0.25em] uppercase mt-2">
+                FULL STACK DEVELOPER · AI/ML · VIDEO EDITOR
               </div>
             </motion.div>
           )}
 
           {/* Bottom Progress Bar */}
-          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 w-64 flex flex-col items-center gap-1.5 pointer-events-none">
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-30 w-56 flex flex-col items-center gap-1.5 pointer-events-none">
             <div className="w-full h-1 bg-white/10 rounded-full overflow-hidden">
               <motion.div
                 initial={{ width: '0%' }}
                 animate={{ width: `${(phase / 5) * 100}%` }}
-                transition={{ duration: 0.4 }}
-                className="h-full bg-gradient-to-r from-[#A00025] via-[#FF1538] to-[#FFF000] shadow-[0_0_12px_#FF1538]"
+                transition={{ duration: 0.6, ease: 'easeOut' }}
+                className="h-full bg-gradient-to-r from-[#8d0b1c] via-[#d90429] to-[#ff2a45] shadow-[0_0_12px_#ff2a45]"
               />
             </div>
             <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
-              CINEMATIC OPENING SEQUENCE · {phase}/5
+              CINEMATIC OPENING · {phase}/5
             </span>
           </div>
         </motion.div>
