@@ -1,5 +1,7 @@
-import { X, Download, ExternalLink, GraduationCap, Code2, Award, Mail, Phone, Briefcase, Trophy } from 'lucide-react'
-import { personalInfo } from '../../data/portfolioData'
+import { useEffect } from 'react'
+import { X, Download, FileText, CheckCircle2, GraduationCap, Award, Code2 } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { content } from '../../data/content'
 
 interface ResumeModalProps {
   isOpen: boolean
@@ -7,216 +9,165 @@ interface ResumeModalProps {
 }
 
 export function ResumeModal({ isOpen, onClose }: ResumeModalProps) {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose()
+    }
+    if (isOpen) {
+      document.body.style.overflow = 'hidden'
+      window.addEventListener('keydown', handleKeyDown)
+    }
+    return () => {
+      document.body.style.overflow = 'auto'
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isOpen, onClose])
+
   if (!isOpen) return null
 
-  const handleDownload = () => {
-    window.print()
-  }
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/85 backdrop-blur-md transition-opacity"
-        onClick={onClose}
-      />
+    <AnimatePresence>
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+        {/* Backdrop */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          onClick={onClose}
+          className="fixed inset-0 bg-black/85 backdrop-blur-md"
+        />
 
-      {/* Modal Dialog */}
-      <div className="relative bg-[#0d1220] border border-white/15 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl text-slate-200 z-10 max-h-[90vh] overflow-y-auto">
-        <div className="flex items-start justify-between border-b border-white/10 pb-5">
-          <div>
-            <div className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wider text-cyan-400 bg-cyan-500/10 border border-cyan-500/20 mb-2">
-              Verified Candidate Resume
+        {/* Modal Window */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.94, y: 20 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.94, y: 20 }}
+          transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+          className="relative w-full max-w-3xl bg-[#0f0f10] border border-white/15 rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(0,0,0,0.9)] z-10 max-h-[90vh] flex flex-col"
+        >
+          {/* Header */}
+          <div className="p-6 sm:p-8 bg-gradient-to-r from-[#8d0b1c]/40 via-[#0f0f10] to-[#0f0f10] border-b border-white/10 flex items-start justify-between">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-2xl bg-[#d90429]/20 border border-[#d90429]/40 flex items-center justify-center text-[#ff2a45]">
+                <FileText className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-anton text-2xl sm:text-3xl text-white tracking-wide uppercase">
+                  {content.personal.name} · RESUME
+                </h3>
+                <p className="text-xs sm:text-sm font-mono text-[#9a9a9a] mt-0.5">
+                  {content.personal.degree} · {content.personal.college}
+                </p>
+              </div>
             </div>
-            <h3 className="text-2xl font-bold text-white tracking-tight">{personalInfo.name}</h3>
-            <p className="text-sm text-slate-400 mt-0.5">
-              {personalInfo.role} · {personalInfo.secondaryRole}
-            </p>
-          </div>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={handleDownload}
-              className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold text-white bg-blue-600 hover:bg-blue-500 transition-colors shadow-sm"
-              title="Print or Save as PDF"
-            >
-              <Download className="w-3.5 h-3.5" />
-              <span>Print / Save PDF</span>
-            </button>
             <button
               onClick={onClose}
-              className="p-1.5 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors"
-              aria-label="Close modal"
+              className="p-2.5 rounded-full bg-white/5 border border-white/10 text-[#9a9a9a] hover:text-white hover:bg-white/10 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
-        </div>
 
-        {/* Modal Body: Resume View */}
-        <div className="mt-6 space-y-6 text-sm">
-          {/* Quick Contact Bar */}
-          <div className="flex flex-wrap items-center gap-4 p-3 rounded-xl bg-[#111728] border border-white/5 text-xs text-slate-300">
-            <div className="flex items-center gap-1.5">
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{personalInfo.contact.formattedPhone}</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <Mail className="w-3.5 h-3.5 text-cyan-400" />
-              <a href={`mailto:${personalInfo.contact.email}`} className="text-cyan-300 hover:underline">
-                {personalInfo.contact.email}
-              </a>
-            </div>
-            <div className="flex items-center gap-2 ml-auto">
-              <a
-                href={personalInfo.contact.github}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white flex items-center gap-1 transition-colors text-blue-400"
-              >
-                GitHub <ExternalLink className="w-3 h-3" />
-              </a>
-              <a
-                href={personalInfo.contact.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                className="hover:text-white flex items-center gap-1 transition-colors text-indigo-400"
-              >
-                LinkedIn <ExternalLink className="w-3 h-3" />
-              </a>
-            </div>
-          </div>
-
-          {/* Professional Summary */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
-              About Me
-            </h4>
-            <p className="text-slate-300 leading-relaxed bg-[#111728] p-3.5 rounded-xl border border-white/5">
-              {personalInfo.bio}
-            </p>
-          </div>
-
-          {/* Education */}
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
-              <GraduationCap className="w-4 h-4" />
-              <span>Education</span>
-            </div>
-            <div className="space-y-2">
-              <div className="bg-[#111728] p-3.5 rounded-xl border border-white/5">
-                <div className="flex justify-between items-start">
-                  <div>
-                    <h5 className="font-semibold text-white">
-                      {personalInfo.education.institution}
-                    </h5>
-                    <p className="text-xs text-slate-300">
-                      {personalInfo.education.degree} – {personalInfo.education.major}
-                    </p>
-                  </div>
-                  <span className="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded border border-cyan-500/20">
-                    2025 – 2029
-                  </span>
-                </div>
+          {/* Body Content */}
+          <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-sm">
+            {/* Academic Credentials */}
+            <div className="p-4 rounded-2xl bg-white/[0.02] border border-white/5 space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ffe600] uppercase">
+                <GraduationCap className="w-4 h-4 text-[#ffe600]" />
+                <span>ACADEMIC FOUNDATION</span>
               </div>
+              <p className="text-white font-bold">{content.personal.college}</p>
+              <p className="text-xs text-zinc-400">
+                {content.personal.degree} ({content.personal.batch}) · {content.personal.location}
+              </p>
+            </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-                {personalInfo.education.schooling.map((s) => (
-                  <div key={s.level} className="bg-[#111728] p-2.5 rounded-xl border border-white/5">
-                    <span className="text-white font-medium block">{s.level}</span>
-                    <span className="text-slate-400">{s.name} ({s.period})</span>
+            {/* Core Competencies */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#ff2a45] uppercase">
+                <Code2 className="w-4 h-4 text-[#ff2a45]" />
+                <span>TECHNICAL CAPABILITIES</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs font-mono">
+                {[
+                  'Java & Spring Boot',
+                  'Python & Scikit-learn',
+                  'C Programming',
+                  'React & TypeScript',
+                  'MySQL & MongoDB',
+                  'CapCut & Video Production',
+                  'Raspberry Pi Robotics',
+                  'Fastify & REST APIs',
+                  'Git & GitHub',
+                ].map((s) => (
+                  <div
+                    key={s}
+                    className="p-2 rounded-lg bg-[#050505] border border-white/5 flex items-center gap-2 text-zinc-300"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#ff2a45]" />
+                    <span>{s}</span>
                   </div>
                 ))}
               </div>
             </div>
-          </div>
 
-          {/* Competitive Programming & Coding Achievements */}
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
-              <Trophy className="w-4 h-4" />
-              <span>Competitive Coding Track Record</span>
-            </div>
-            <div className="grid grid-cols-3 gap-2 text-center text-xs">
-              <div className="bg-[#111728] p-3 rounded-xl border border-cyan-500/30">
-                <span className="text-xl font-bold text-white block">600+</span>
-                <span className="text-[11px] text-cyan-300">SkillRack Solved</span>
+            {/* Key Accomplishments */}
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-xs font-mono font-bold text-white uppercase">
+                <Award className="w-4 h-4 text-[#ffe600]" />
+                <span>SELECT VERIFIED MILESTONES</span>
               </div>
-              <div className="bg-[#111728] p-3 rounded-xl border border-indigo-500/30">
-                <span className="text-xl font-bold text-white block">35+</span>
-                <span className="text-[11px] text-indigo-300">LeetCode Solved</span>
-              </div>
-              <div className="bg-[#111728] p-3 rounded-xl border border-emerald-500/30">
-                <span className="text-xl font-bold text-white block">30+</span>
-                <span className="text-[11px] text-emerald-300">HackerRank Solved</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Featured Projects */}
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
-              <Code2 className="w-4 h-4" />
-              <span>Key Projects</span>
-            </div>
-            <ul className="space-y-2.5">
-              <li className="bg-[#111728] p-3 rounded-xl border border-white/5">
-                <span className="font-semibold text-white text-xs block">CocoCut – Autonomous Coconut Frond Cutting Rover</span>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Autonomous rover with Raspberry Pi compute, offline ML detection camera, obstacle avoidance sensors, GPS boundary marking, and companion mobile app.
-                </p>
-              </li>
-              <li className="bg-[#111728] p-3 rounded-xl border border-white/5">
-                <span className="font-semibold text-white text-xs block">EV Charging & Camera Network</span>
-                <p className="text-xs text-slate-400 mt-0.5">
-                  Full-stack smart pole management platform built in Java Spring Boot with Spring Data JPA and MySQL; layered Maven architecture and REST APIs.
-                </p>
-              </li>
-            </ul>
-          </div>
-
-          {/* Industry Experience */}
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
-              <Briefcase className="w-4 h-4" />
-              <span>Experience</span>
-            </div>
-            <div className="bg-[#111728] p-3.5 rounded-xl border border-white/5">
-              <div className="flex justify-between items-start">
-                <div>
-                  <h5 className="font-semibold text-white">Media Team Intern – Issai Technology</h5>
-                  <p className="text-xs text-slate-300 mt-0.5">
-                    Worked with the media team on creative video, photo, and poster content; gained exposure to working in a technology company environment.
-                  </p>
-                </div>
-                <span className="text-xs font-mono text-slate-400">1 Month</span>
-              </div>
+              <ul className="space-y-2 text-xs text-zinc-300">
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span>
+                    <strong>600+ Algorithmic Challenges Solved</strong> on SkillRack in Java, C, and Python.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span>
+                    <strong>Co-Founder of CocoCut</strong>: Autonomous coconut leaf cutting rover prototype (MIT App Contest Top 5).
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span>
+                    <strong>Smart India Hackathon (SIH 2026)</strong>: Team Neural Nexus developing CyberSentinel AI.
+                  </span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#ffe600] mt-1.5 shrink-0" />
+                  <span>
+                    <strong>Freelance Video Editor</strong>: Authored 14+ commercial edits for ISSai Technology & IDC Media.
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
 
-          {/* Achievements & Certifications */}
-          <div>
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-cyan-400 mb-2">
-              <Award className="w-4 h-4" />
-              <span>Achievements & Certifications</span>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-              <div className="bg-[#111728] p-2.5 rounded-xl border border-white/5">
-                <span className="font-semibold text-white">Top Performer – MIT APP Project Contest</span>
-              </div>
-              <div className="bg-[#111728] p-2.5 rounded-xl border border-white/5">
-                <span className="font-semibold text-white">Academic Champion – Sri Eshwar College</span>
-              </div>
-              <div className="bg-[#111728] p-2.5 rounded-xl border border-white/5">
-                <span className="font-semibold text-white">Youth for Climate Action</span>
-              </div>
-              <div className="bg-[#111728] p-2.5 rounded-xl border border-white/5">
-                <span className="font-semibold text-white">Certified in C Programming</span>
-              </div>
+          {/* Footer Actions */}
+          <div className="p-5 sm:p-6 bg-[#050505] border-t border-white/10 flex items-center justify-between">
+            <span className="text-xs font-mono text-[#9a9a9a]">Verified Candidate Profile</span>
+            <div className="flex items-center gap-3">
+              <a
+                href={`mailto:${content.personal.contact.email}?subject=Requesting%20Hari%20Prasath%20Resume%20PDF`}
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-anton text-sm tracking-wider uppercase text-white bg-gradient-to-r from-[#8d0b1c] to-[#d90429] shadow-[0_0_15px_rgba(255,42,69,0.4)] hover:brightness-110 transition-all"
+              >
+                <Download className="w-4 h-4" />
+                <span>Request Official PDF</span>
+              </a>
+              <button
+                onClick={onClose}
+                className="px-4 py-2.5 rounded-xl font-mono text-xs text-[#9a9a9a] hover:text-white"
+              >
+                Close
+              </button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
+    </AnimatePresence>
   )
 }

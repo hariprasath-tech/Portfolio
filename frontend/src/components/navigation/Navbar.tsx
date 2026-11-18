@@ -1,28 +1,30 @@
 import { useState, useEffect } from 'react'
-import { Menu, X, FileText, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowUpRight, Sparkles } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 
 interface NavbarProps {
   activeSection: string
-  onResumeClick: () => void
+  onHireMeClick: () => void
 }
 
-const navLinks = [
-  { label: 'Home', href: '#hero', id: 'hero' },
-  { label: 'About', href: '#about', id: 'about' },
-  { label: 'Skills', href: '#skills', id: 'skills' },
-  { label: 'Projects', href: '#projects', id: 'projects' },
-  { label: 'Speaking', href: '#speaking', id: 'speaking' },
-  { label: 'Achievements', href: '#achievements', id: 'achievements' },
-  { label: 'Contact', href: '#contact', id: 'contact' },
+const NAV_LINKS = [
+  { label: 'ABOUT', href: '#about', id: 'about' },
+  { label: 'TECH STACK', href: '#tech-stack', id: 'tech-stack' },
+  { label: 'PROJECTS', href: '#projects', id: 'projects' },
+  { label: 'SHOWREEL', href: '#video-showcase', id: 'video-showcase' },
+  { label: 'EXPERIENCE', href: '#experience', id: 'experience' },
+  { label: 'LEADERSHIP', href: '#leadership', id: 'leadership' },
+  { label: 'BEYOND CODE', href: '#beyond-code', id: 'beyond-code' },
+  { label: 'CONTACT', href: '#contact', id: 'contact' },
 ]
 
-export function Navbar({ activeSection, onResumeClick }: NavbarProps) {
+export function Navbar({ activeSection, onHireMeClick }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 25)
+      setIsScrolled(window.scrollY > 30)
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
@@ -41,9 +43,9 @@ export function Navbar({ activeSection, onResumeClick }: NavbarProps) {
 
   const handleNavClick = (href: string) => {
     setMobileMenuOpen(false)
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+    const el = document.querySelector(href)
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
@@ -51,33 +53,38 @@ export function Navbar({ activeSection, onResumeClick }: NavbarProps) {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 w-full ${
         isScrolled
-          ? 'bg-[#07090e]/85 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/30 py-3'
+          ? 'bg-[#050505]/85 backdrop-blur-md border-b border-white/10 shadow-[0_4px_30px_rgba(0,0,0,0.8)] py-3'
           : 'bg-transparent py-5'
       }`}
     >
-      <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 2xl:px-24">
+      <div className="w-full px-5 sm:px-10 lg:px-14 xl:px-20 2xl:px-24">
         <div className="flex items-center justify-between">
-          {/* Brand Logo */}
+          {/* Brand Logo "HP" */}
           <a
             href="#hero"
             onClick={(e) => {
               e.preventDefault()
               handleNavClick('#hero')
             }}
-            className="group flex items-center gap-3 text-white font-bold tracking-tight focus:outline-none focus:ring-2 focus:ring-cyan-500 rounded-xl p-1"
+            className="group flex items-center gap-3 text-white focus:outline-none"
+            aria-label="Hari Prasath S - Home"
           >
-            <span className="w-9 h-9 rounded-xl bg-gradient-to-tr from-cyan-500 via-blue-600 to-indigo-600 flex items-center justify-center text-white text-sm font-black shadow-md shadow-cyan-500/25 group-hover:scale-105 transition-transform duration-200">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#d90429] via-[#8d0b1c] to-[#0f0f10] border border-[#ff2a45]/50 flex items-center justify-center text-white font-anton text-lg tracking-wider shadow-[0_0_15px_rgba(255,42,69,0.4)] group-hover:scale-105 transition-transform">
               HP
-            </span>
-            <div className="flex items-center text-xl font-extrabold tracking-tight">
-              <span>HARI PRASATH</span>
-              <span className="text-cyan-400 font-black">.</span>
+            </div>
+            <div className="flex flex-col">
+              <span className="font-anton text-lg sm:text-xl tracking-wider text-white group-hover:text-[#ffe600] transition-colors leading-none">
+                HARI PRASATH <span className="text-[#ff2a45]">.</span>
+              </span>
+              <span className="text-[10px] font-mono tracking-[0.2em] text-[#9a9a9a] uppercase mt-0.5">
+                SHOWREEL · 2026
+              </span>
             </div>
           </a>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-1.5 bg-[#0e1424]/80 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md shadow-inner">
-            {navLinks.map((link) => {
+          <nav className="hidden xl:flex items-center gap-1 bg-[#0f0f10]/80 border border-white/10 px-4 py-2 rounded-full backdrop-blur-md shadow-inner">
+            {NAV_LINKS.map((link) => {
               const isActive = activeSection === link.id
               return (
                 <a
@@ -87,10 +94,10 @@ export function Navbar({ activeSection, onResumeClick }: NavbarProps) {
                     e.preventDefault()
                     handleNavClick(link.href)
                   }}
-                  className={`relative px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all duration-200 ${
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-mono font-bold tracking-wider transition-all duration-200 ${
                     isActive
-                      ? 'text-white bg-cyan-500/25 text-cyan-300 shadow-sm border border-cyan-400/40'
-                      : 'text-slate-400 hover:text-white hover:bg-white/5'
+                      ? 'text-white bg-[#d90429] shadow-[0_0_15px_rgba(255,42,69,0.5)] border border-[#ff2a45]/60'
+                      : 'text-[#9a9a9a] hover:text-white hover:bg-white/5'
                   }`}
                 >
                   {link.label}
@@ -99,71 +106,75 @@ export function Navbar({ activeSection, onResumeClick }: NavbarProps) {
             })}
           </nav>
 
-          {/* Right Action: Resume & Mobile Hamburger */}
+          {/* Right Action: "Hire Me" Button + Mobile Toggle */}
           <div className="flex items-center gap-3">
             <button
-              onClick={onResumeClick}
-              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold tracking-wide text-white bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 active:scale-95 transition-all shadow-md shadow-blue-600/30 border border-blue-400/40 cursor-pointer"
-              aria-label="View verified candidate resume"
+              onClick={onHireMeClick}
+              className="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full font-anton text-sm tracking-wider uppercase text-white bg-gradient-to-r from-[#8d0b1c] via-[#d90429] to-[#ff2a45] hover:brightness-110 active:scale-95 transition-all shadow-[0_0_20px_rgba(255,42,69,0.45)] border border-[#ff2a45]/50 cursor-pointer"
             >
-              <FileText className="w-3.5 h-3.5" />
-              <span>Resume</span>
-              <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
+              <Sparkles className="w-3.5 h-3.5 text-[#ffe600]" />
+              <span>Hire Me</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </button>
 
+            {/* Mobile Menu Hamburger */}
             <button
-              type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 border border-white/10 focus:outline-none focus:ring-2 focus:ring-cyan-500"
-              aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+              className="xl:hidden p-2.5 rounded-xl bg-[#0f0f10] border border-white/10 text-white hover:border-[#ff2a45]/50 transition-colors"
+              aria-label="Toggle mobile navigation menu"
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? <X className="w-5 h-5 text-[#ff2a45]" /> : <Menu className="w-5 h-5" />}
             </button>
           </div>
         </div>
       </div>
 
       {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0a0e19]/95 border-b border-white/10 backdrop-blur-xl px-6 pt-4 pb-6 mt-3 shadow-2xl animate-in slide-in-from-top-2 duration-200">
-          <nav className="flex flex-col gap-2">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id
-              return (
-                <a
-                  key={link.id}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault()
-                    handleNavClick(link.href)
-                  }}
-                  className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
-                    isActive
-                      ? 'text-white bg-cyan-600/20 border border-cyan-500/30 font-semibold'
-                      : 'text-slate-300 hover:text-white hover:bg-white/5'
-                  }`}
-                >
-                  <span>{link.label}</span>
-                  {isActive && <span className="w-2 h-2 rounded-full bg-cyan-400" />}
-                </a>
-              )
-            })}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+            className="xl:hidden bg-[#050505]/95 border-b border-white/10 backdrop-blur-xl px-6 py-6 overflow-hidden"
+          >
+            <div className="flex flex-col gap-2.5">
+              {NAV_LINKS.map((link) => {
+                const isActive = activeSection === link.id
+                return (
+                  <a
+                    key={link.id}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleNavClick(link.href)
+                    }}
+                    className={`px-4 py-3 rounded-xl text-sm font-mono font-bold tracking-wider transition-all ${
+                      isActive
+                        ? 'bg-[#d90429] text-white shadow-[0_0_15px_rgba(255,42,69,0.4)]'
+                        : 'text-[#9a9a9a] hover:text-white hover:bg-white/5'
+                    }`}
+                  >
+                    {link.label}
+                  </a>
+                )
+              })}
 
-            <div className="pt-3 mt-2 border-t border-white/10">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false)
-                  onResumeClick()
+                  onHireMeClick()
                 }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl text-sm font-bold text-white bg-blue-600 hover:bg-blue-500 transition-colors shadow-lg shadow-blue-600/30"
+                className="mt-3 w-full py-3.5 rounded-xl font-anton text-sm tracking-wider uppercase text-white bg-gradient-to-r from-[#8d0b1c] to-[#d90429] flex items-center justify-center gap-2 shadow-[0_0_20px_rgba(255,42,69,0.4)] border border-[#ff2a45]/40"
               >
-                <FileText className="w-4 h-4" />
-                <span>View Full Resume</span>
+                <Sparkles className="w-4 h-4 text-[#ffe600]" />
+                <span>Hire Me / Get In Touch</span>
               </button>
             </div>
-          </nav>
-        </div>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   )
 }
