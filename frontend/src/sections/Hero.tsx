@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react'
 import {
   ArrowDown,
   FileText,
@@ -7,7 +6,6 @@ import {
   MapPin,
   Star,
   Terminal,
-  ChevronRight,
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { content } from '../data/content'
@@ -21,14 +19,6 @@ interface HeroProps {
 const NAME_LETTERS = Array.from('HARI PRASATH S.')
 
 export function Hero({ onResumeClick }: HeroProps) {
-  const [roleIndex, setRoleIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRoleIndex((prev) => (prev + 1) % content.personal.roles.length)
-    }, 2500)
-    return () => clearInterval(interval)
-  }, [])
 
   const scrollTo = (id: string) => {
     const el = document.querySelector(id)
@@ -136,40 +126,32 @@ export function Hero({ onResumeClick }: HeroProps) {
               ))}
             </h1>
 
-            {/* Headline: "BUILDING IDEAS INTO REALITY." */}
+            {/* Subtitle: "DEVELOPER | CREATOR | FOUNDER" */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.6 }}
-              className="mt-4 font-anton text-2xl sm:text-3xl md:text-4xl text-[#ffe600] tracking-wider uppercase leading-tight"
+              className="mt-3 font-anton text-2xl sm:text-3xl md:text-4xl text-[#ffe600] tracking-wider uppercase leading-tight flex items-center gap-2"
               style={{
                 WebkitTextStroke: '0.8px #ffffff',
                 textShadow: '0 0 15px rgba(255, 230, 0, 0.4)',
               }}
             >
-              {content.personal.headline}
+              <span>DEVELOPER</span>
+              <span className="text-[#ff2a45]">|</span>
+              <span>CREATOR</span>
+              <span className="text-[#ff2a45]">|</span>
+              <span>FOUNDER</span>
             </motion.div>
 
-            {/* Roles Line: Developer. Creator. Founder. */}
+            {/* Headline: "BUILDING IDEAS INTO REALITY." */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.7 }}
-              className="mt-2.5 flex items-center gap-2 text-base sm:text-xl font-mono text-zinc-300 font-semibold"
+              className="mt-2 text-sm sm:text-base font-mono font-bold text-white tracking-wider uppercase"
             >
-              <span className="text-[#9a9a9a]">Role:</span>
-              <div className="flex items-center gap-2 text-white font-bold">
-                {content.personal.roles.map((r, i) => (
-                  <span
-                    key={r}
-                    className={`transition-all duration-300 ${
-                      i === roleIndex ? 'text-[#ff2a45] scale-105' : 'text-zinc-400'
-                    }`}
-                  >
-                    {r}
-                  </span>
-                ))}
-              </div>
+              {content.personal.headline}
             </motion.div>
 
             {/* Short Bio */}
@@ -221,36 +203,48 @@ export function Hero({ onResumeClick }: HeroProps) {
               ))}
             </motion.div>
 
-            {/* CTAs: Explore Work, Download Resume, Contact */}
+            {/* CTAs: Explore My Work, Download Resume, LinkedIn, GitHub */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.95 }}
-              className="mt-8 flex flex-wrap items-center gap-3.5 w-full sm:w-auto"
+              className="mt-8 flex flex-wrap items-center gap-3 w-full sm:w-auto"
             >
               <button
                 onClick={() => scrollTo('#projects')}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl font-anton text-sm tracking-wider uppercase text-white bg-gradient-to-r from-[#8d0b1c] via-[#d90429] to-[#ff2a45] hover:brightness-110 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,42,69,0.45)] border border-[#ff2a45]/50 cursor-pointer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl font-anton text-sm tracking-wider uppercase text-white bg-gradient-to-r from-[#8d0b1c] via-[#d90429] to-[#ff2a45] hover:brightness-110 active:scale-95 transition-all shadow-[0_0_25px_rgba(255,42,69,0.45)] border border-[#ff2a45]/50 cursor-pointer"
               >
-                <span>Explore Work</span>
+                <span>Explore My Work</span>
                 <ArrowDown className="w-4 h-4" />
               </button>
 
               <button
                 onClick={onResumeClick}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-4 rounded-xl font-anton text-sm tracking-wider uppercase text-white bg-[#0f0f10] hover:bg-[#171719] border border-white/15 transition-all cursor-pointer shadow-lg"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-xl font-anton text-sm tracking-wider uppercase text-white bg-[#0f0f10] hover:bg-[#171719] border border-white/15 transition-all cursor-pointer shadow-lg"
               >
                 <FileText className="w-4 h-4 text-[#ffe600]" />
                 <span>Download Resume</span>
               </button>
 
-              <button
-                onClick={() => scrollTo('#contact')}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-4 rounded-xl font-anton text-sm tracking-wider uppercase text-[#f5f5f5] hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 transition-all cursor-pointer"
+              <a
+                href={content.personal.contact.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-anton text-sm tracking-wider uppercase text-[#f5f5f5] hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#ff2a45]/50 transition-all cursor-pointer"
               >
-                <span>Contact</span>
-                <ChevronRight className="w-4 h-4 text-[#ff2a45]" />
-              </button>
+                <LinkedinIcon className="w-4 h-4 text-[#0077b5]" />
+                <span>LinkedIn</span>
+              </a>
+
+              <a
+                href={content.personal.contact.github}
+                target="_blank"
+                rel="noreferrer"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl font-anton text-sm tracking-wider uppercase text-[#f5f5f5] hover:text-white bg-white/5 hover:bg-white/10 border border-white/10 hover:border-[#ff2a45]/50 transition-all cursor-pointer"
+              >
+                <GithubIcon className="w-4 h-4 text-[#ff2a45]" />
+                <span>GitHub</span>
+              </a>
             </motion.div>
 
             {/* Social Links Strip */}

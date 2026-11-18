@@ -67,7 +67,11 @@ export function Contact() {
               textShadow: '0 0 35px rgba(255, 230, 0, 0.45)',
             }}
           >
-            LET'S BUILD SOMETHING MEANINGFUL.
+            LET'S CREATE
+            <br />
+            SOMETHING
+            <br />
+            EXTRAORDINARY.
           </h2>
 
           <p className="mt-4 text-sm sm:text-base text-zinc-300 max-w-2xl mx-auto leading-relaxed font-inter">

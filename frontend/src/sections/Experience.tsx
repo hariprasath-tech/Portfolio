@@ -78,10 +78,10 @@ export function Experience() {
                 </div>
 
                 {/* Placeholder Note (as requested for strictly authentic disclosures) */}
-                {exp.placeholderNote && (
+                {(exp as { placeholderNote?: string }).placeholderNote && (
                   <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 flex items-center gap-2 text-xs font-mono text-zinc-400">
                     <AlertCircle className="w-3.5 h-3.5 text-[#ffe600] shrink-0" />
-                    <span>{exp.placeholderNote}</span>
+                    <span>{(exp as { placeholderNote?: string }).placeholderNote}</span>
                   </div>
                 )}
 

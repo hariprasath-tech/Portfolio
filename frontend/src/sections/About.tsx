@@ -15,7 +15,7 @@ export function About() {
       <div className="w-full px-6 sm:px-10 lg:px-14 xl:px-20 2xl:px-24 relative z-10">
         <SectionTitle
           badge="ABOUT ME"
-          title={about.title}
+          title={about.heading || 'MORE THAN JUST CODE.'}
           subtitle={about.tagline}
           align="center"
         />
