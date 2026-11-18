@@ -36,8 +36,8 @@ export const personalInfo = {
     ],
   },
   contact: {
-    phone: '6369424966',
-    formattedPhone: '+91 63694 24966',
+    phone: '',
+    formattedPhone: '',
     email: 'irah208prasath@gmail.com',
     collegeEmail: 'hariprasath.s2025cse@sece.ac.in',
     github: 'https://github.com/hariprasath-tech',

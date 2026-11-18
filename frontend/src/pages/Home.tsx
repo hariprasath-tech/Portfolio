@@ -3,7 +3,7 @@ import Lenis from 'lenis'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-import { Preloader } from '../components/common/Preloader'
+import { MotionIntro } from '../components/common/MotionIntro'
 import { CustomCursor } from '../components/common/CustomCursor'
 import { ScrollProgressBar } from '../components/common/ScrollProgressBar'
 import { FilmGrain } from '../components/common/FilmGrain'
@@ -84,9 +84,9 @@ export function Home() {
 
   return (
     <div className="min-h-screen bg-[#050505] text-[#f5f5f5] flex flex-col relative selection:bg-[#d90429]/40 selection:text-white overflow-x-hidden font-inter">
-      {/* 1. Page Load Preloader */}
+      {/* 1. Page Load Cinematic Motion Intro (0-8s Reference Sequence) */}
       {isPreloaderActive && (
-        <Preloader onComplete={() => setIsPreloaderActive(false)} />
+        <MotionIntro onComplete={() => setIsPreloaderActive(false)} />
       )}
 
       {/* 2. Custom Desktop Cursor */}
