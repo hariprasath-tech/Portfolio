@@ -5,14 +5,13 @@ import {
   Sparkles,
   MapPin,
   Terminal,
-  Trophy,
   Scissors,
   Mic,
   Cpu,
 } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { content } from '../data/content'
-import portraitCutout from '../assets/hari-prasath-cutout.png'
+import standingCutout from '../assets/hari-standing-cutout.png'
 import { GithubIcon, LinkedinIcon } from '../components/common/BrandIcons'
 
 interface HeroProps {
@@ -34,12 +33,12 @@ export function Hero({ onResumeClick }: HeroProps) {
     >
       {/* 1. BACKGROUND GRADIENTS & RED VOLUMETRIC GLOWS */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-[#100306] to-[#080808] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[750px] h-[550px] bg-gradient-to-tr from-[#8d0b1c]/30 via-[#d90429]/35 to-[#ff2a45]/20 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-0 left-1/3 -translate-x-1/2 w-[800px] h-40 bg-[#d90429]/15 blur-[140px] pointer-events-none" />
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[850px] h-[550px] bg-gradient-to-tr from-[#8d0b1c]/30 via-[#d90429]/35 to-[#ff2a45]/20 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[900px] h-44 bg-[#d90429]/15 blur-[140px] pointer-events-none" />
 
       {/* Subtle Dot Grid Texture */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-[0.04]"
+        className="absolute inset-0 pointer-events-none opacity-[0.035]"
         style={{
           backgroundImage: 'radial-gradient(circle at 1px 1px, #ff2a45 1px, transparent 0)',
           backgroundSize: '44px 44px',
@@ -47,12 +46,12 @@ export function Hero({ onResumeClick }: HeroProps) {
       />
 
       {/* 2. CINEMATIC "PORTFOLIO" WORDMARK */}
-      {/* Positioned behind the portrait in the center-right to guarantee ZERO overlap with text on the left */}
-      <div className="absolute inset-y-0 right-0 left-1/4 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
+      {/* Centered behind the standing cutout with subtle low contrast so all text stays 100% legible */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0 overflow-hidden">
         <div
           className="font-bebas text-[22vw] lg:text-[20vw] leading-none tracking-tight font-extrabold uppercase text-[#d90429]/15 select-none"
           style={{
-            textShadow: '0 0 70px rgba(217, 4, 41, 0.45)',
+            textShadow: '0 0 80px rgba(217, 4, 41, 0.45)',
             WebkitTextStroke: '1.5px rgba(255, 42, 69, 0.25)',
             transform: 'translateY(-2%)',
           }}
@@ -69,7 +68,7 @@ export function Hero({ onResumeClick }: HeroProps) {
           {/* LEFT FLANK: High-Legibility Editorial Typography & Actions (5 Cols) */}
           {/* ============================================================== */}
           <div className="lg:col-span-5 flex flex-col items-start text-left z-30 pt-4 lg:pt-0">
-            {/* Status Pill - Ruby / Platinum styling, NO gaudy yellow */}
+            {/* Status Pill */}
             <motion.div
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
@@ -240,18 +239,19 @@ export function Hero({ onResumeClick }: HeroProps) {
           </div>
 
           {/* ============================================================== */}
-          {/* CENTER STAGE: Life-Size Bust Portrait Cutout (4 Cols) */}
+          {/* CENTER STAGE: Full Standing Cutout (Clean, No Plants or Pillars) (4 Cols) */}
           {/* ============================================================== */}
-          <div className="lg:col-span-4 flex justify-center items-end relative min-h-[500px] sm:min-h-[600px] lg:min-h-[680px]">
-            {/* Center Volumetric Crimson Glow behind portrait */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[640px] bg-gradient-to-tr from-[#8d0b1c]/35 via-[#d90429]/40 to-[#ff2a45]/20 rounded-full blur-[110px] pointer-events-none" />
+          <div className="lg:col-span-4 flex justify-center items-end relative min-h-[520px] sm:min-h-[640px] lg:min-h-[740px]">
+            {/* Center Volumetric Crimson Glow behind standing figure */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[680px] bg-gradient-to-tr from-[#8d0b1c]/35 via-[#d90429]/40 to-[#ff2a45]/20 rounded-full blur-[120px] pointer-events-none" />
 
-            {/* Glowing Ground Stage Pedestal */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-80 h-16 bg-gradient-to-r from-transparent via-[#ff2a45]/45 to-transparent rounded-full blur-xl pointer-events-none" />
+            {/* Glowing Ground Stage Pedestal Beneath Shoes */}
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-80 h-16 bg-gradient-to-r from-transparent via-[#ff2a45]/50 to-transparent rounded-full blur-xl pointer-events-none" />
+            <div className="absolute bottom-1 left-1/2 -translate-x-1/2 w-64 h-2 bg-[#ff2a45]/70 rounded-full blur-sm pointer-events-none" />
 
-            {/* High-Resolution Cutout Portrait */}
+            {/* Full-Height Standing Cutout */}
             <motion.div
-              initial={{ opacity: 0, y: 30, scale: 0.97 }}
+              initial={{ opacity: 0, y: 35, scale: 0.96 }}
               animate={{
                 opacity: 1,
                 y: [0, -6, 0],
@@ -265,12 +265,12 @@ export function Hero({ onResumeClick }: HeroProps) {
               className="relative z-20 w-full flex justify-center drop-shadow-[0_25px_40px_rgba(0,0,0,0.95)]"
             >
               <img
-                src={portraitCutout}
+                src={standingCutout}
                 alt="Hari Prasath S - Portrait"
-                className="w-auto h-[55vh] sm:h-[65vh] lg:h-[75vh] xl:h-[80vh] max-h-[780px] object-contain select-none pointer-events-none"
+                className="w-auto h-[58vh] sm:h-[68vh] lg:h-[78vh] xl:h-[84vh] max-h-[820px] object-contain select-none pointer-events-none"
                 style={{
                   filter:
-                    'drop-shadow(0 0 35px rgba(217, 4, 41, 0.4)) contrast(1.04) brightness(1.02)',
+                    'drop-shadow(0 0 35px rgba(217, 4, 41, 0.4)) contrast(1.05) brightness(1.02)',
                 }}
                 loading="eager"
               />
@@ -285,9 +285,9 @@ export function Hero({ onResumeClick }: HeroProps) {
           </div>
 
           {/* ============================================================== */}
-          {/* RIGHT FLANK: 4 Compact Sleek Metric Cards (3 Cols) */}
+          {/* RIGHT FLANK: 4 Compact Polished Metric Cards (3 Cols) */}
           {/* ============================================================== */}
-          <div className="lg:col-span-3 flex flex-col gap-3.5 z-30 justify-center">
+          <div className="lg:col-span-3 flex flex-col gap-3.5 z-30 justify-center items-stretch lg:items-end">
 
             {/* Metric 1: 600+ Solved */}
             <motion.div
@@ -295,17 +295,17 @@ export function Hero({ onResumeClick }: HeroProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.4, delay: 0.3 }}
               whileHover={{ scale: 1.03, x: -3 }}
-              className="p-3.5 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all"
+              className="w-full max-w-[320px] p-4 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#d90429]/20 border border-[#d90429]/50 flex items-center justify-center text-[#ff2a45] shrink-0">
-                  <Trophy className="w-5 h-5 text-[#ff2a45]" />
+                <div className="w-11 h-11 rounded-xl bg-[#d90429]/20 border border-[#d90429]/50 flex items-center justify-center text-[#ff2a45] shrink-0 font-anton text-base">
+                  600+
                 </div>
                 <div>
                   <div className="text-xs font-anton text-white tracking-wider flex items-center gap-1.5">
-                    <span>600+ PROBLEMS SOLVED</span>
+                    <span>PROBLEMS SOLVED</span>
                   </div>
-                  <p className="text-[10px] text-zinc-400 font-mono">SkillRack Top Performer</p>
+                  <p className="text-[11px] text-zinc-400 font-mono">SkillRack Top Performer</p>
                 </div>
               </div>
             </motion.div>
@@ -317,10 +317,10 @@ export function Hero({ onResumeClick }: HeroProps) {
               transition={{ duration: 0.4, delay: 0.4 }}
               whileHover={{ scale: 1.03, x: -3 }}
               onClick={() => scrollTo('#projects')}
-              className="p-3.5 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all cursor-pointer"
+              className="w-full max-w-[320px] p-4 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#8d0b1c]/30 border border-[#d90429]/50 flex items-center justify-center text-[#ff2a45] shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#8d0b1c]/30 border border-[#d90429]/50 flex items-center justify-center text-[#ff2a45] shrink-0">
                   <Cpu className="w-5 h-5 text-[#ff2a45]" />
                 </div>
                 <div>
@@ -328,7 +328,7 @@ export function Hero({ onResumeClick }: HeroProps) {
                     <span>COCOCUT ROVER</span>
                     <Sparkles className="w-3 h-3 text-[#ff2a45]" />
                   </div>
-                  <p className="text-[10px] text-zinc-400 font-mono">MIT App Contest Top 5 Finalist</p>
+                  <p className="text-[11px] text-zinc-400 font-mono">MIT App Contest Top 5 Finalist</p>
                 </div>
               </div>
             </motion.div>
@@ -340,17 +340,17 @@ export function Hero({ onResumeClick }: HeroProps) {
               transition={{ duration: 0.4, delay: 0.5 }}
               whileHover={{ scale: 1.03, x: -3 }}
               onClick={() => scrollTo('#video-showcase')}
-              className="p-3.5 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all cursor-pointer"
+              className="w-full max-w-[320px] p-4 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-white/5 border border-white/15 flex items-center justify-center text-white shrink-0">
                   <Scissors className="w-5 h-5 text-[#ff2a45]" />
                 </div>
                 <div>
                   <div className="text-xs font-anton text-white tracking-wider">
                     FREELANCE VIDEO EDITOR
                   </div>
-                  <p className="text-[10px] text-zinc-400 font-mono">14+ Client Edits (ISSai & IDC)</p>
+                  <p className="text-[11px] text-zinc-400 font-mono">14+ Commercial Client Edits</p>
                 </div>
               </div>
             </motion.div>
@@ -362,17 +362,17 @@ export function Hero({ onResumeClick }: HeroProps) {
               transition={{ duration: 0.4, delay: 0.6 }}
               whileHover={{ scale: 1.03, x: -3 }}
               onClick={() => scrollTo('#leadership')}
-              className="p-3.5 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all cursor-pointer"
+              className="w-full max-w-[320px] p-4 rounded-2xl bg-[#0f0f10]/95 backdrop-blur-md border border-white/10 hover:border-[#ff2a45]/60 shadow-xl transition-all cursor-pointer"
             >
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-[#d90429]/20 border border-[#ff2a45]/40 flex items-center justify-center text-[#ff2a45] shrink-0">
+                <div className="w-11 h-11 rounded-xl bg-[#d90429]/20 border border-[#ff2a45]/40 flex items-center justify-center text-[#ff2a45] shrink-0">
                   <Mic className="w-5 h-5 text-[#ff2a45]" />
                 </div>
                 <div>
                   <div className="text-xs font-anton text-white tracking-wider">
                     THE PODIUM · EP 04
                   </div>
-                  <p className="text-[10px] text-zinc-400 font-mono">Table-Topic Public Speaker</p>
+                  <p className="text-[11px] text-zinc-400 font-mono">Table-Topic Public Speaker</p>
                 </div>
               </div>
             </motion.div>
