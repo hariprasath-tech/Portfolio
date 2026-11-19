@@ -34,4 +34,4 @@ Thumbs.db
 *.sw?
 
 # Raw uncompressed source media (cleanly processed assets reside in frontend/public/ and frontend/src/assets/)
-assets/
+/assets/
